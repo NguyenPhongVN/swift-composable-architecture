@@ -56,10 +56,13 @@ public final class ViewStore<State, Action>: ObservableObject {
   // N.B. `ViewStore` does not use a `@Published` property, so `objectWillChange`
   // won't be synthesized automatically. To work around issues on iOS 13 we explicitly declare it.
   public private(set) lazy var objectWillChange = ObservableObjectPublisher()
+  
+  public let action = PassthroughSubject<Action, Never>()
 
   private let _send: (Action) -> Void
   fileprivate let _state: CurrentValueRelay<State>
   private var viewCancellable: AnyCancellable?
+  var cancellables: Set<AnyCancellable> = []
 
   /// Initializes a view store from a store.
   ///
@@ -81,6 +84,9 @@ public final class ViewStore<State, Action>: ObservableObject {
         self.objectWillChange.send()
         self._state.value = $0
       }
+    
+    self.action.sink(receiveValue: self.send(_:))
+      .store(in: &cancellables)
   }
 
   /// A publisher that emits when state changes.

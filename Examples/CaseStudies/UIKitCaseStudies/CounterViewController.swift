@@ -2,6 +2,7 @@ import Combine
 import ComposableArchitecture
 import SwiftUI
 import UIKit
+import CombineCocoa
 
 struct CounterState: Equatable {
   var count = 0
@@ -44,14 +45,12 @@ final class CounterViewController: UIViewController {
     self.view.backgroundColor = .systemBackground
 
     let decrementButton = UIButton(type: .system)
-    decrementButton.addTarget(self, action: #selector(decrementButtonTapped), for: .touchUpInside)
     decrementButton.setTitle("−", for: .normal)
 
     let countLabel = UILabel()
     countLabel.font = .monospacedDigitSystemFont(ofSize: 17, weight: .regular)
 
     let incrementButton = UIButton(type: .system)
-    incrementButton.addTarget(self, action: #selector(incrementButtonTapped), for: .touchUpInside)
     incrementButton.setTitle("+", for: .normal)
 
     let rootStackView = UIStackView(arrangedSubviews: [
@@ -66,6 +65,16 @@ final class CounterViewController: UIViewController {
       rootStackView.centerXAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.centerXAnchor),
       rootStackView.centerYAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.centerYAnchor),
     ])
+    
+    decrementButton.tapPublisher
+      .map {CounterAction.decrementButtonTapped}
+      .subscribe(viewStore.action)
+      .store(in: &cancellables)
+    
+    incrementButton.tapPublisher
+      .map {CounterAction.incrementButtonTapped}
+      .subscribe(viewStore.action)
+      .store(in: &cancellables)
 
     self.viewStore.publisher
       .map { "\($0.count)" }
@@ -73,13 +82,6 @@ final class CounterViewController: UIViewController {
       .store(in: &self.cancellables)
   }
 
-  @objc func decrementButtonTapped() {
-    self.viewStore.send(.decrementButtonTapped)
-  }
-
-  @objc func incrementButtonTapped() {
-    self.viewStore.send(.incrementButtonTapped)
-  }
 }
 
 struct CounterViewController_Previews: PreviewProvider {

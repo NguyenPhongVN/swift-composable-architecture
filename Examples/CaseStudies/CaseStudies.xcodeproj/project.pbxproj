@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		4F5AC11F24ECC7E4009DC50B /* 01-GettingStarted-SharedStateTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F5AC11E24ECC7E4009DC50B /* 01-GettingStarted-SharedStateTests.swift */; };
+		87BD6A5827077EB0003EBC80 /* CombineCocoa in Frameworks */ = {isa = PBXBuildFile; productRef = 87BD6A5727077EB0003EBC80 /* CombineCocoa */; };
+		87BD6A5B2707815F003EBC80 /* CombineCocoa in Frameworks */ = {isa = PBXBuildFile; productRef = 87BD6A5A2707815F003EBC80 /* CombineCocoa */; };
 		CA0C0C4724B89BEC00CBDD8A /* 04-HigherOrderReducers-LifecycleTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA0C0C4624B89BEC00CBDD8A /* 04-HigherOrderReducers-LifecycleTests.swift */; };
 		CA0C51FB245389CC00A04EAB /* 04-HigherOrderReducers-ReusableOfflineDownloadsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA0C51FA245389CC00A04EAB /* 04-HigherOrderReducers-ReusableOfflineDownloadsTests.swift */; };
 		CA25E5D224463AD700DA666A /* 01-GettingStarted-Bindings-Basics.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA25E5D124463AD700DA666A /* 01-GettingStarted-Bindings-Basics.swift */; };
@@ -254,6 +256,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				87BD6A5B2707815F003EBC80 /* CombineCocoa in Frameworks */,
 				DC1394102469E27300EE1157 /* ComposableArchitecture in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -269,6 +272,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				87BD6A5827077EB0003EBC80 /* CombineCocoa in Frameworks */,
 				DC13940E2469E25C00EE1157 /* ComposableArchitecture in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -283,6 +287,13 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		87BD6A5927077FA2003EBC80 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		CA6AC25F2451131C00C71CB3 /* 04-HigherOrderReducers-ResuableOfflineDownloads */ = {
 			isa = PBXGroup;
 			children = (
@@ -371,6 +382,7 @@
 				CAF88E8624B8E26E00539345 /* tvOSCaseStudiesTests */,
 				DC4C6EA82450DD380066A05D /* UIKitCaseStudies */,
 				DC4C6EBF2450DD390066A05D /* UIKitCaseStudiesTests */,
+				87BD6A5927077FA2003EBC80 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -516,6 +528,7 @@
 			name = UIKitCaseStudies;
 			packageProductDependencies = (
 				DC13940F2469E27300EE1157 /* ComposableArchitecture */,
+				87BD6A5A2707815F003EBC80 /* CombineCocoa */,
 			);
 			productName = UIKitCaseStudies;
 			productReference = DC4C6EA72450DD380066A05D /* UIKitCaseStudies.app */;
@@ -558,6 +571,7 @@
 			name = SwiftUICaseStudies;
 			packageProductDependencies = (
 				DC13940D2469E25C00EE1157 /* ComposableArchitecture */,
+				87BD6A5727077EB0003EBC80 /* CombineCocoa */,
 			);
 			productName = CaseStudies;
 			productReference = DC89C41324460F95006900B9 /* SwiftUICaseStudies.app */;
@@ -626,6 +640,9 @@
 				Base,
 			);
 			mainGroup = DC89C40A24460F95006900B9;
+			packageReferences = (
+				87BD6A5627077EB0003EBC80 /* XCRemoteSwiftPackageReference "CombineCocoa" */,
+			);
 			productRefGroup = DC89C41424460F95006900B9 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -1250,7 +1267,28 @@
 		};
 /* End XCConfigurationList section */
 
+/* Begin XCRemoteSwiftPackageReference section */
+		87BD6A5627077EB0003EBC80 /* XCRemoteSwiftPackageReference "CombineCocoa" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/CombineCommunity/CombineCocoa";
+			requirement = {
+				branch = main;
+				kind = branch;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
 /* Begin XCSwiftPackageProductDependency section */
+		87BD6A5727077EB0003EBC80 /* CombineCocoa */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 87BD6A5627077EB0003EBC80 /* XCRemoteSwiftPackageReference "CombineCocoa" */;
+			productName = CombineCocoa;
+		};
+		87BD6A5A2707815F003EBC80 /* CombineCocoa */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 87BD6A5627077EB0003EBC80 /* XCRemoteSwiftPackageReference "CombineCocoa" */;
+			productName = CombineCocoa;
+		};
 		CAF88E9024B8E3AF00539345 /* ComposableArchitecture */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = ComposableArchitecture;
